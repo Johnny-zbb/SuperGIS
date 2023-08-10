@@ -35,8 +35,11 @@
     "comps/*": [
       "src/components/*"
     ],
-    "views/*": [
-      "src/views/*"
+    "pages/*": [
+      "src/pages/*"
+    ],
+    "router/*": [
+      "src/router/*"
     ],
     "store/*": [
       "src/store/*"
