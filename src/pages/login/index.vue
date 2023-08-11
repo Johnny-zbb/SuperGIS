@@ -3,6 +3,7 @@
     <n-card title="登录">
         <n-input round placeholder="用户名" v-model:value="user.username"/>
         <n-input round placeholder="密码" v-model:value="user.password"  @keydown.enter="login"/>
+        <a class="forget" href="javascript:void()">忘记密码？</a>
     </n-card>
 </div>
 
@@ -12,6 +13,8 @@ import { IosAppstore } from '@vicons/ionicons4'
 import { NCard ,NInput} from 'naive-ui'
 import {reactive} from 'vue'
 import { useRouter } from 'vue-router'
+import { useLoadingBar } from 'naive-ui'
+const loadingBar = useLoadingBar()
 const router = useRouter()
 const user = reactive({
     username:'',
@@ -19,11 +22,15 @@ const user = reactive({
 })
 let login = function(params) {
     console.log(router)
-    router.push('home')
+    loadingBar.start()
+    setTimeout(() => {
+        loadingBar.finish()
+        router.push('home')
+    }, 1000);
 }
 
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .login {
     height: 100%;
     background: url('@/assets/beams.jpg');
@@ -40,7 +47,14 @@ let login = function(params) {
     top: 50%;
     transform: translate(-50%,-50%);
 }
-.n-input{
-    margin-top: 20px;
+.n-input:nth-child(2){
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.forget{
+    position: relative;
+    float: right;
+    margin-top: 15px;
+    text-decoration: none;
 }
 </style>
