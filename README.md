@@ -21,3 +21,10 @@ npm run dev
 - [ ] 多源地图加载
 - [ ] 交互绘制
 - [ ] ThreeJS特效
+
+## 联系方式
+- 微信公众号：GIS宇宙
+- CSDN：GIS_宇宙
+- 知乎：GIS宇宙
+- 掘金：GIS宇宙
+- B站：GIS宇宙
