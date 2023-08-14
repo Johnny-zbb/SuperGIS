@@ -7,11 +7,16 @@
 </template>
 
 <script setup>
-import { IosCalendar, IosClock, IosCloudy, IosSettings ,IosNavigate} from '@vicons/ionicons4'
+import { IosCalendar, IosClock, IosInformationCircle, IosSettings ,IosNavigate} from '@vicons/ionicons4'
 import { NIcon } from 'naive-ui'
 import anime from 'animejs'
 import { reactive } from 'vue';
 const dockList = reactive([
+{
+        icon:IosInformationCircle,
+        name:'关于',
+        function:()=>{alert('hello!')},
+    },
     {
         icon:IosSettings,
         name:'设置',
