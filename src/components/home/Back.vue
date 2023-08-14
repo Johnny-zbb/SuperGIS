@@ -1,8 +1,12 @@
 <template lang="">
     <div class="bg">
+        <CesiumVue/>
     </div>
 </template>
 
+<script setup>
+import CesiumVue from "@/components/map/cesium/index.vue"
+</script>
 <style>
 .bg {
     background-image: url("@/assets/bg.png");
