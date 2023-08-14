@@ -3,6 +3,8 @@
 
 
 SuperGIS is an open source GIS project that uses Cesium as a 3D map, based on a new technical framework of Vue 3 + TypeScript + Vite + Pinia, with a UI that references the Mac design
+
+
 ![SuperGIS](/public/system.jpg)
 
 ## Install
