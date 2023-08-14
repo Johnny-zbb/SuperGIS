@@ -1,6 +1,6 @@
 
 <template>
-  <mac-dialog v-if="isDialogVisible" @close="closeDialog">
+  <mac-dialog @close="closeDialog" position="left">
     <template #header>
       地图导航
     </template>
@@ -26,13 +26,10 @@
 import { NTimeline, NTimelineItem, NSelect,NIcon } from 'naive-ui';
 import MacDialog from '@/components/macOS/dialog.vue';
 import { ref } from 'vue'
-let isDialogVisible = ref(true)
-let showDialog = () => {
-  isDialogVisible = true;
-}
-let closeDialog = () => {
-  isDialogVisible = false;
-  console.log(isDialogVisible)
+import { useHomeStore } from '@/store/home.ts'
+const homeStore = useHomeStore()
+let closeDialog = function () {
+  homeStore.navigatorVis(false)
 }
 
 

@@ -1,18 +1,18 @@
 <template>
-    <div class="mac-dialog">
+    <div :class="[baseClass, position]">
         <div class="mac-dialog-header">
             <slot name="header">
                 <!-- 默认的标题 -->
                 <h2>{{ title }}</h2>
             </slot>
-            <div class="optionBtn" @mouseenter="showBtnIcon=true" @mouseleave="showBtnIcon=false">
+            <div class="optionBtn" @mouseenter="showBtnIcon = true" @mouseleave="showBtnIcon = false">
                 <div class="btn green">
                     <n-icon v-show="showBtnIcon" size="15" color="black" :component="IosBuild" />
                 </div>
                 <div class="btn yellow">
                     <n-icon v-show="showBtnIcon" size="15" color="black" :component="MdRemove" />
                 </div>
-                <div class="btn red">
+                <div class="btn red" @click="close">
                     <n-icon v-show="showBtnIcon" size="15" color="black" :component="IosClose" />
                 </div>
             </div>
@@ -30,12 +30,14 @@
 </template>
   
 <script setup>
-import {IosClose,MdRemove,IosBuild} from '@vicons/ionicons4'
+import { IosClose, MdRemove, IosBuild } from '@vicons/ionicons4'
 import { NIcon } from 'naive-ui';
 import { ref } from 'vue';
 defineProps({
-    title:String,
+    title: String,
+    position: String,
 })
+const baseClass = ref('mac-dialog')
 const showBtnIcon = ref(false)
 const emit = defineEmits(['close'])
 
@@ -53,9 +55,26 @@ let close = function () {
     max-width: 480px;
     margin: 0 auto;
     padding: 10px 15px;
+}
+
+.left {
     position: fixed;
     left: 10px;
     top: 45px;
+}
+
+.right {
+    position: fixed;
+    right: 10px;
+    top: 45px;
+}
+
+.middle {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
 }
 
 .mac-dialog-header {
@@ -70,29 +89,34 @@ let close = function () {
     justify-content: flex-end;
     margin-top: 20px;
 }
-.optionBtn{
+
+.optionBtn {
     display: flex;
-    .btn{
+
+    .btn {
         width: 12px;
         height: 12px;
         background-color: black;
         border-radius: 50%;
-        margin: 0px 2px ;
+        margin: 0px 2px;
         border: rgba(0, 0, 0, 0.16) 1px solid;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .red{
+
+    .red {
         background-color: #FF5F57;
     }
-    .yellow{
+
+    .yellow {
         background-color: #FFBC2E;
     }
-    .green{
+
+    .green {
         background-color: #2BC840;
     }
 }
-/* 可根据实际需要进行样式调整 */
-</style>
+
+/* 可根据实际需要进行样式调整 */</style>
   

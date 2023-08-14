@@ -11,11 +11,16 @@ import { IosCalendar, IosClock, IosInformationCircle, IosSettings ,IosNavigate} 
 import { NIcon } from 'naive-ui'
 import anime from 'animejs'
 import { reactive } from 'vue';
+import { useHomeStore } from '@/store/home.ts'
+const homeStore = useHomeStore()
+console.log(homeStore)
 const dockList = reactive([
 {
         icon:IosInformationCircle,
         name:'关于',
-        function:()=>{alert('hello!')},
+        function:()=>{
+            homeStore.systemInfoVis(!homeStore.systemInfoVisiable)
+        },
     },
     {
         icon:IosSettings,
@@ -25,7 +30,9 @@ const dockList = reactive([
     {
         icon:IosNavigate,
         name:'导航',
-        function:()=>{alert('hello!')},
+        function:()=>{
+            homeStore.navigatorVis(!homeStore.navigatorVisiable)
+        },
     },
 ])
 const haddleMouseEnter = (e) => {
