@@ -1,5 +1,5 @@
 # Vue 3 + TypeScript + Vite + Pinia + Cesium 
-[中文介绍](README.ZH.md)
+[中文介绍](README.zh_CN.md)
 
 
 SuperGIS is an open source GIS project that uses Cesium as a 3D map, based on a new technical framework of Vue 3 + TypeScript + Vite + Pinia, with a UI that references the Mac design
