@@ -1,10 +1,10 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref ,provide} from 'vue'
 import * as Cesium from 'cesium'
 
 //cesium初始化必须写在mounted生命周期里面，否则会报错"Element with id "cesiumContainer" does not exist in the document."
 onMounted(() => {
-    const viewer = new Cesium.Viewer('cesiumContainer', {
+     const viewer = new Cesium.Viewer('cesiumContainer', {
         animation: false, //是否创建动画小器件，左下角仪表
         baseLayerPicker: false, //是否显示图层选择器
         fullscreenButton: false, //是否显示全屏按钮
@@ -35,6 +35,7 @@ onMounted(() => {
 
     viewer._cesiumWidget._creditContainer.style.display = "none"; //隐藏图标
     viewer._container.style.cursor = "default";
+    window.viewer = viewer
 })
 </script>
 
