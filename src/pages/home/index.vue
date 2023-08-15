@@ -2,15 +2,10 @@
     <HeaderVue />
     <BackVue />
     <DockVue />
-    <transition enter-active-class="animate__animated animate__slideInLeft animate__fast"
-     leave-active-class="animate__animated animate__fadeOut animate__fast">
-        <NavigationVue v-show="homeStore.navigatorVisiable" />
-    </transition>
-    <transition enter-active-class="animate__animated animate__zoomIn animate__fast"
-     leave-active-class="animate__animated animate__fadeOut animate__fast">
-    <SystemInfoVue v-show="homeStore.systemInfoVisiable" />
-    </transition>
 
+    <NavigationVue v-show="homeStore.navigatorVisiable" />
+    <SystemInfoVue v-show="homeStore.systemInfoVisiable" />
+    <AiChatVue v-show="homeStore.aiChatVisiable" />
 </template>
 
 <script setup>
@@ -20,6 +15,8 @@ import DockVue from '@/components/home/Dock.vue'
 import HeaderVue from '@/components/home/Header.vue'
 import NavigationVue from '@/components/navigation/index.vue';
 import SystemInfoVue from '@/components/home/SystemInfo.vue'
+import AiChatVue from '@/components/aiChat/index.vue'
+
 import { useHomeStore } from '@/store/home.ts'
 const homeStore = useHomeStore()
 </script>

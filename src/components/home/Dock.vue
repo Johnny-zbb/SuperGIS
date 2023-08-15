@@ -1,13 +1,13 @@
 <template>
     <div class="dock">
         <div class="dockApp" v-for="(item,index) in dockList" @click="item.function" @mouseenter="haddleMouseEnter" @mouseleave="haddleMouseLeave">
-            <n-icon size="30" color="white" :component="item.icon" />
+            <n-icon size="30" :color="white" :component="item.icon" />
         </div>
     </div>
 </template>
 
 <script setup>
-import { IosCalendar, IosClock, IosInformationCircle, IosSettings ,IosNavigate} from '@vicons/ionicons4'
+import { IosCalendar, IosClock, IosInformationCircle, IosSettings ,IosNavigate,IosApps,IosChatboxes} from '@vicons/ionicons4'
 import { NIcon } from 'naive-ui'
 import anime from 'animejs'
 import { reactive } from 'vue';
@@ -34,6 +34,20 @@ const dockList = reactive([
             homeStore.navigatorVis(!homeStore.navigatorVisiable)
         },
     },
+    {
+        icon:IosApps,
+        name:'图层',
+        function:()=>{
+            homeStore.mapLaterVis(!homeStore.mapLayerVisiable)
+        },
+    },
+    {
+        icon:IosChatboxes,
+        name:'AiChat',
+        function:()=>{
+            homeStore.aiChatVis(!homeStore.aiChatVisiable)
+        },
+    },
 ])
 const haddleMouseEnter = (e) => {
     console.log('haddleMouseEnter',e)
@@ -55,7 +69,15 @@ const haddleMouseLeave = (e) => {
         duration: 600
     });
 }
-
+// 生成随机颜色的函数
+function generateRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 </script>
 
 

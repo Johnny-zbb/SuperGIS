@@ -6,6 +6,9 @@ export const useHomeStore = defineStore('home', {
     return {
       navigatorVisiable: false,
       systemInfoVisiable: true,
+      mapLayerVisiable: false,
+      aiChatVisiable: false,
+
     }
   },
   // 也可以这样定义
@@ -16,6 +19,12 @@ export const useHomeStore = defineStore('home', {
     },
     systemInfoVis(params: boolean) {
       this.systemInfoVisiable = params
+    },
+    mapLaterVis(params: boolean) {
+      this.mapLayerVisiable = params
+    },
+    aiChatVis(params: boolean) {
+      this.aiChatVisiable = params
     },
   },
 })
