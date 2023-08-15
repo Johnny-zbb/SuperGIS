@@ -96,6 +96,7 @@ function generateRandomColor() {
     padding: 5px;
     display: flex;
     height: auto;
+    z-index: 999;
 }
 
 
