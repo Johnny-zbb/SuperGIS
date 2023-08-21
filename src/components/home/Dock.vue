@@ -14,7 +14,9 @@ import { NIcon } from 'naive-ui'
 import anime from 'animejs'
 import { reactive, inject } from 'vue';
 import { useHomeStore } from '@/store/home.ts'
-import * as Cesium from 'cesium'
+import { getMyLocation } from '@/methods/cesiumHelper.ts'
+import { useLoadingBar } from 'naive-ui'
+const loadingBar = useLoadingBar()
 const homeStore = useHomeStore()
 
 const dockList = reactive([
@@ -48,50 +50,8 @@ const dockList = reactive([
         icon: MapMarkedAlt,
         name: '定位',
         function: () => {
-            console.log(window.viewer)
-            // 检查浏览器是否支持 Geolocation API
-            if ("geolocation" in navigator) {
-                // 请求用户权限
-                navigator.geolocation.getCurrentPosition(
-                    position => {
-                        const latitude = position.coords.latitude;
-                        const longitude = position.coords.longitude;
-                        console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-
-                        // 在这里可以将坐标用于其他操作，如显示在地图上等
-                        // 设置自定义图标的 URL
-                        const iconUrl = '@vicons/ionicons4/IosClock.svg';
-
-                        // 创建一个带有自定义图标的点实体
-                        const pointEntity = viewer.entities.add({
-                            position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
-                            point: {
-                                color: Cesium.Color.SKYBLUE, // default: WHITE
-                                pixelSize: 10, // default: 1
-                                outlineColor: Cesium.Color.YELLOW, // default: BLACK
-                                outlineWidth: 5, // default: 0
-                            },
-                        });
-
-                        // 设置视图中心为点的位置
-                        viewer.camera.flyTo({
-                        destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, 1000),
-                        orientation: {
-                            heading: Cesium.Math.toRadians(0),
-                            pitch: Cesium.Math.toRadians(-90),
-                            roll: 0,
-                        },
-                        duration: 2,
-                        });
-                    },
-                    error => {
-                        console.error("Error getting user's location:", error);
-                    }
-                );
-            } else {
-                console.log("Geolocation is not available in this browser.");
-            }
-
+            loadingBar.start()
+            getMyLocation(window.viewer,loadingBar.finish)
         },
     },
     {
@@ -120,15 +80,7 @@ const haddleMouseLeave = (e) => {
         duration: 600
     });
 }
-// 生成随机颜色的函数
-function generateRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
+
 </script>
 
 

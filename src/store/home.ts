@@ -5,7 +5,7 @@ export const useHomeStore = defineStore('home', {
   state: () => {
     return {
       navigatorVisiable: false,
-      systemInfoVisiable: true,
+      systemInfoVisiable: false,
       mapLayerVisiable: false,
       aiChatVisiable: false,
 

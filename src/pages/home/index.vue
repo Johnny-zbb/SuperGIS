@@ -19,4 +19,6 @@ import AiChatVue from '@/components/aiChat/index.vue'
 
 import { useHomeStore } from '@/store/home.ts'
 const homeStore = useHomeStore()
+
+
 </script>

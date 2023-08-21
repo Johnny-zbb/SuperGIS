@@ -16,15 +16,27 @@
             <n-icon size="18" color="white" :component="IosSettings" />
         </div>
         <div class="icon">
-            <span style="cursor: default;">8月14日 星期一 18:00</span>
+            <span style="cursor: default;">{{dateString||'8月14日 周一 18:00'}}</span>
         </div>
     </div>
 </template>
 
 <script setup>
-import { IosCalendar ,IosClock,IosCloudy,IosSettings,IosSwitch} from '@vicons/ionicons4'
+import { IosCalendar, IosClock, IosCloudy, IosSettings, IosSwitch } from '@vicons/ionicons4'
 import { NIcon } from 'naive-ui'
-
+import { getToday } from '@/methods/webTools.ts'
+import { onMounted, ref ,onBeforeUnmount,} from 'vue'
+let dateString = ref('')
+let timer = null
+onMounted(() => {
+    timer = setInterval(() => {
+        dateString.value = getToday()
+        console.log(dateString.value)
+    }, 1000);
+})
+onBeforeUnmount(()=>{
+    clearInterval(timer)
+})
 </script>
 
 <style lang="scss">
@@ -40,6 +52,7 @@ import { NIcon } from 'naive-ui'
     align-items: center;
     justify-content: flex-end;
     z-index: 999;
+
     .systemName {
         position: absolute;
         font-weight: 600;
