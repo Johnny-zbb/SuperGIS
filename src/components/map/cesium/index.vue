@@ -31,7 +31,8 @@ onMounted(() => {
     viewer.scene.globe.enableLighting = true;
 
     //Enable depth testing so things behind the terrain disappear.
-    viewer.scene.globe.depthTestAgainstTerrain = true;
+    // 关闭可以解决点半圆显示，但是可能导致底下的东西展现
+    viewer.scene.globe.depthTestAgainstTerrain = false;
 
     viewer._cesiumWidget._creditContainer.style.display = "none"; //隐藏图标
     viewer._container.style.cursor = "default";

@@ -64,12 +64,13 @@ const dockList = reactive([
 
                         // 创建一个带有自定义图标的点实体
                         const pointEntity = viewer.entities.add({
-                        position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
-                        billboard: {
-                            image: iconUrl,
-                            width: 30,
-                            height: 30,
-                        },
+                            position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
+                            point: {
+                                color: Cesium.Color.SKYBLUE, // default: WHITE
+                                pixelSize: 10, // default: 1
+                                outlineColor: Cesium.Color.YELLOW, // default: BLACK
+                                outlineWidth: 5, // default: 0
+                            },
                         });
 
                         // 设置视图中心为点的位置
@@ -77,7 +78,7 @@ const dockList = reactive([
                         destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, 1000),
                         orientation: {
                             heading: Cesium.Math.toRadians(0),
-                            pitch: Cesium.Math.toRadians(-45),
+                            pitch: Cesium.Math.toRadians(-90),
                             roll: 0,
                         },
                         duration: 2,
