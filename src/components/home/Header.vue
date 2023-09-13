@@ -4,7 +4,7 @@
             SuperGIS
         </div>
         <div class="icon" @click="handleClick">
-            <n-icon size="18" color="white" :component="MdAddCircle" />
+            <n-icon size="18" color="white" :component="DrawImage20Filled" />
         </div>
         <div class="icon">
             <n-icon size="18" color="white" :component="IosClock" />
@@ -36,13 +36,15 @@
             <n-button size="medium" secondary strong>绘制线<n-icon size="18" color="black"
                     :component="IosTrendingUp" /></n-button>
             <n-button size="medium" secondary strong>绘制面<n-icon size="18" color="black"
-                    :component="MdCellular" /></n-button>
+                    :component="DrawPolygon" /></n-button>
         </div>
     </n-popover>
 </template>
 
 <script setup>
 import { MdAddCircle, IosClock, IosCloudy, IosSettings, IosSwitch, IosTrendingUp, IosPin, MdCellular } from '@vicons/ionicons4'
+import { DrawPolygon,}from '@vicons/fa'
+import { DrawImage20Filled,}from '@vicons/fluent'
 import { NIcon, NPopover, NButton } from 'naive-ui'
 import { getToday } from '@/methods/webTools.ts'
 import { onMounted, ref, onBeforeUnmount, } from 'vue'
