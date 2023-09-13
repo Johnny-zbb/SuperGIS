@@ -36,6 +36,25 @@ onMounted(() => {
 
     viewer._cesiumWidget._creditContainer.style.display = "none"; //隐藏图标
     viewer._container.style.cursor = "default";
+
+    const TianDikey  = ''
+    viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
+        url: "http://t{s}.tianditu.gov.cn/ibo_w/wmts?tk=" + TianDikey,
+        layer: "ibo",
+        style: "default",
+        tileMatrixSetID: "w",
+        format: "tiles",
+        maximumLevel: 18,
+        subdomains: ['0', '1', '2', '3', '4', '5', '6', '7']
+    }))
+    viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
+        url: "http://t0.tianditu.gov.cn/cva_w/wmts?tk=" + TianDikey,
+        layer: "cva",
+        style: "default",
+        tileMatrixSetID: "w",
+        format: "tiles",
+        maximumLevel: 18
+    }))
     window.viewer = viewer
 })
 </script>
